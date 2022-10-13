@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 import {useTheme} from '../context/ThemeContext';
 
@@ -15,6 +16,10 @@ const LoginScreen = () => {
 
   return (
     <View style={[Styles.container, {backgroundColor: colors.primary}]}>
+      <StatusBar
+        backgroundColor={colors.primary}
+        barStyle={dark ? 'light-content' : 'dark-content'}
+      />
       <Text style={[Styles.titleText, {color: colors.secondary}]}>
         Login Screen
       </Text>
