@@ -6,29 +6,40 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import {useTheme} from '../context/ThemeContext';
 
 const LoginScreen = () => {
+  const {dark, colors, setScheme} = useTheme();
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
   return (
-    <View style={Styles.container}>
-      <Text style={Styles.titleText}>Login Screen</Text>
+    <View style={[Styles.container, {backgroundColor: colors.primary}]}>
+      <Text style={[Styles.titleText, {color: colors.secondary}]}>
+        Login Screen
+      </Text>
       <TextInput
         value={userName}
         onChangeText={text => setUserName(text)}
         placeholder={'User name'}
-        placeholderTextColor={'black'}
-        style={Styles.inputFieldStyle}
+        placeholderTextColor={colors.secondary}
+        style={[Styles.inputFieldStyle, {borderColor: colors.secondary}]}
       />
       <TextInput
         value={password}
         onChangeText={text => setPassword(text)}
         placeholder={'Password'}
-        placeholderTextColor={'black'}
-        style={Styles.inputFieldStyle}
+        placeholderTextColor={colors.secondary}
+        style={[Styles.inputFieldStyle, {borderColor: colors.secondary}]}
       />
-      <TouchableOpacity style={Styles.button}>
+      <TouchableOpacity
+        style={[
+          Styles.button,
+          {
+            shadowColor: colors.secondary,
+            backgroundColor: colors.buttonBackground,
+          },
+        ]}>
         <Text style={Styles.buttonText}>Login</Text>
       </TouchableOpacity>
     </View>
@@ -39,7 +50,6 @@ const Styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 20,
@@ -50,21 +60,20 @@ const Styles = StyleSheet.create({
     borderWidth: 1,
     marginVertical: 10,
     borderRadius: 10,
-    borderColor: 'black',
     paddingHorizontal: 15,
     color: 'black',
   },
   button: {
-    backgroundColor: 'blue',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 10,
-    shadowColor: 'black',
-    shadowOffset: {width: 10, height: 10},
+    shadowOffset: {width: 10, height: 0},
     shadowOpacity: 0.5,
-    shadowRadius: 10,
+    shadowRadius: 8,
     elevation: 5,
     marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonText: {
     color: 'white',
@@ -73,7 +82,6 @@ const Styles = StyleSheet.create({
     letterSpacing: 1,
   },
   titleText: {
-    color: 'black',
     fontSize: 22,
     fontWeight: 'bold',
     letterSpacing: 1,
