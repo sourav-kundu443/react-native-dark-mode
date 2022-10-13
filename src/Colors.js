@@ -1,8 +1,8 @@
 export const lightThemeColors = {
   primary: '#fff',
-  secondary: '#111',
+  secondary: '#2E2E2E',
 };
 export const darkThemeColors = {
-  primary: '#111',
+  primary: '#2E2E2E',
   secondary: '#fff',
 };
